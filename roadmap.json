@@ -1,3 +1,20 @@
 {
-  "skills": ["flask", "sql", "docker"]
+  "skills": [
+    {
+      "name": "Scraping",
+      "priority": "urgente"
+    },
+    {
+      "name": "APIs",
+      "priority": "clave"
+    },
+    {
+      "name": "Docker",
+      "priority": "interesante"
+    },
+    {
+      "name": "Git avanzado",
+      "priority": "urgente"
+    }
+  ]
 }

@@ -1,6 +1,7 @@
 import json
 from typing import List
 
+
 class StudyRoadmap:
     def __init__(self, roadmap_path: str):
         self.path = roadmap_path
@@ -10,3 +11,31 @@ class StudyRoadmap:
         with open(self.path, "r", encoding="utf-8") as f:
             data = json.load(f)
             return data.get("skills", [])
+
+    def add_skill(self, name: str, priority: str) -> None:
+        if any(s["name"] == name for s in self.skills):
+            print(f"⚠️ Ya existe una skill con el nombre '{name}'")
+            return
+        self.skills.append({"name": name, "priority": priority})
+        self.save()
+
+    def update_priority(self, name: str, new_priority: str) -> None:
+        for skill in self.skills:
+            if skill["name"] == name:
+                skill["priority"] = new_priority
+                self.save()
+                return
+        print(f"❌ No se encontró la skill '{name}'")
+
+    def get_skills_by_priority(self, priority: str) -> List[str]:
+        return [
+            skill["name"] for skill in self.skills if skill.get("priority") == priority
+        ]
+
+    def list_skills(self) -> None:
+        for skill in self.skills:
+            print(f"{skill['name']} → {skill['priority']}")
+
+    def save(self) -> None:
+        with open(self.path, "w", encoding="utf-8") as f:
+            json.dump({"skills": self.skills}, f, indent=2, ensure_ascii=False)
