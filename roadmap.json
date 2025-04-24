@@ -15,6 +15,14 @@
     {
       "name": "Git avanzado",
       "priority": "urgente"
+    },
+    {
+      "name": "PostgreSQL",
+      "priority": "interesante"
+    },
+    {
+      "name": "LiteSQL",
+      "priority": "clave"
     }
   ]
 }
