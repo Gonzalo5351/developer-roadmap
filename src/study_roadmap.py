@@ -49,8 +49,11 @@ class StudyRoadmap:
         sorted_skills = sorted(
             self.skills, key=lambda s: PRIORITY_ORDER.get(s["priority"], 99)
         )
+        skills = []
         for skill in sorted_skills:
             print(f"{skill['name']} → {skill['priority']}")
+            skills.append(skill["name"])
+        return skills
 
     def save(self) -> None:
         with open(self.path, "w", encoding="utf-8") as f:
